@@ -18,6 +18,14 @@ async def get_product(product_id: int):
 # Make sure /users/me works correctly and doesn't get swallowed by the dynamic route
 # Test both in the browser
 
+@app.get("/users/me")
+async def get_my_user():
+    return {"user": "current logged in user"}
+
+@app.get("/users/{user_id}")
+async def get_my_user(user_id):
+    return {"user_id": user_id}
+
 # # Task 3
 # Create an Enum called PaymentMethod with values:
 # "card", "mobile_money", "cash"
