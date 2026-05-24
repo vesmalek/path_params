@@ -1,6 +1,12 @@
+from enum import Enum
 from fastapi import FastAPI
 
 app = FastAPI()
+
+class PaymentMethod(str, Enum):
+    card = "card"
+    cash = "cash"
+    mobile_money = "mobile_money"
 
 # # Task 1
 # Create GET /products/{product_id} where product_id is an int
@@ -35,6 +41,14 @@ async def get_my_user(user_id):
 # - Returns {"method": method, "fee": "0%"} for cash
 # Open /docs and confirm the dropdown shows exactly three options
 # Test with an invalid method like "crypto" and observe the rejection
+
+@app.get("/payments/{method}")
+async def get_payment_details(method: PaymentMethod):
+    if method is PaymentMethod.card:
+        return {"method": method, "fee": "2%"}
+    if method is PaymentMethod.mobile_money:
+        return {"method": method, "fee": "1%"}
+    return {"method": method, "fee": "0%"}
 
 # # Task 4
 # Create GET /users/{user_id}/orders/{order_id}
