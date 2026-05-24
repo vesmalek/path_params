@@ -25,11 +25,11 @@ async def get_product(product_id: int):
 # Test both in the browser
 
 @app.get("/users/me")
-async def get_my_user():
+async def get_current_user():
     return {"user": "current logged in user"}
 
 @app.get("/users/{user_id}")
-async def get_my_user(user_id):
+async def get_user(user_id):
     return {"user_id": user_id}
 
 # # Task 3
