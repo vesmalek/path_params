@@ -23,3 +23,7 @@ async def root(plan_name: PlanName):
     if plan_name is PlanName.pro:
         return {"plan_name": plan_name, "price": "$29/month"}
     return {"plan_name": plan_name, "price": "$50/month"}
+
+@app.get("/users/{user_id}/orders/{order_id}")
+async def root(user_id: int, order_id: int):
+    return {"user_id": user_id, "order_id": order_id}
