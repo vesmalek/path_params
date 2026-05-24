@@ -55,3 +55,7 @@ async def get_payment_details(method: PaymentMethod):
 # Both parameters should be integers
 # Return a dict with both values
 # Test with /users/3/orders/99
+
+@app.get("/users/{user_id}/orders/{order_id}")
+async def get_user_order(user_id: int, order_id: int):
+    return {"user_id": user_id, "order_id": order_id}
